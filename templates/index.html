@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="color:blue">
+        <form action="{{ url_for('predict') }}" method="post">
+            <h2>Predictive Analysis</h2>
+            <h3>Vendor ID</h3>
+            <input id="vendor_id" name="vendor_id" type="number" required="required">
+            <h3>Pickup Datetime</h3>
+            <input id="pickup_datetime" name="pickup_datetime" type="text" required="required" placeholder="YYYY-MM-DD HH:MM:SS">
+            <h3>Passenger Count</h3>
+            <input id="passenger_count" name="passenger_count" type="number" required="required">
+            <h3>Pickup Longitude</h3>
+            <input id="pickup_longitude" name="pickup_longitude" type="text" required="required">
+            <h3>Pickup Latitude</h3>
+            <input id="pickup_latitude" name="pickup_latitude" type="text" required="required">
+            <h3>Dropoff Longitude</h3>
+            <input id="dropoff_longitude" name="dropoff_longitude" type="text" required="required">
+            <h3>Dropoff Latitude</h3>
+            <input id="dropoff_latitude" name="dropoff_latitude" type="text" required="required">
+            <br><br>
+            <button id="sub" type="submit">Calculate the trip duration</button>
+            <br>
+        </form>
+        <br><br>
+        <h3>{{ prediction_text }}<h3>
+    </div>
+    <style>
+        body {
+            background-color: lightslategray;
+            text-align: center;
+            padding: 0px;
+        }
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        #sub:hover {
+            background-color: darkcyan;
+        }
+    </style>
+</body>
+
+</html>
