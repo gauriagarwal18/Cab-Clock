@@ -17,3 +17,4 @@ Werkzeug
 wincertstore
 gunicorn
 pandas
+xgboost
