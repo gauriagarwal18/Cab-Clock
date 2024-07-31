@@ -16,4 +16,4 @@ urllib3
 Werkzeug
 wincertstore
 gunicorn
-
+pandas
