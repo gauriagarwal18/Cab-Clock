@@ -4,51 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Predictive Analysis</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #80bdff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(128, 189, 255, 0.6);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333333;
+        }
+    </style>
 </head>
 
 <body>
-    <div style="color:blue">
-        <form action="{{ url_for('predict') }}" method="post">
-            <h2>Predictive Analysis</h2>
-            <h3>Vendor ID</h3>
-            <input id="vendor_id" name="vendor_id" type="number" required="required">
-            <h3>Pickup Datetime</h3>
-            <input id="pickup_datetime" name="pickup_datetime" type="text" required="required" placeholder="YYYY-MM-DD HH:MM:SS">
-            <h3>Passenger Count</h3>
-            <input id="passenger_count" name="passenger_count" type="number" required="required">
-            <h3>Pickup Longitude</h3>
-            <input id="pickup_longitude" name="pickup_longitude" type="text" required="required">
-            <h3>Pickup Latitude</h3>
-            <input id="pickup_latitude" name="pickup_latitude" type="text" required="required">
-            <h3>Dropoff Longitude</h3>
-            <input id="dropoff_longitude" name="dropoff_longitude" type="text" required="required">
-            <h3>Dropoff Latitude</h3>
-            <input id="dropoff_latitude" name="dropoff_latitude" type="text" required="required">
-            <br><br>
-            <button id="sub" type="submit">Calculate the trip duration</button>
-            <br>
-        </form>
-        <br><br>
-        <h3>{{ prediction_text }}<h3>
+    <form action="{{ url_for('predict') }}" method="post">
+        <h2>Predictive Analysis</h2>
+        <div>
+            <label for="vendor_id">Vendor ID</label><br>
+            <input id="vendor_id" name="vendor_id" type="number" required>
+        </div>
+        <div>
+            <label for="pickup_datetime">Pickup Datetime</label><br>
+            <input id="pickup_datetime" name="pickup_datetime" type="text" required placeholder="YYYY-MM-DD HH:MM:SS">
+        </div>
+        <div>
+            <label for="passenger_count">Passenger Count</label><br>
+            <input id="passenger_count" name="passenger_count" type="number" required>
+        </div>
+        <div>
+            <label for="pickup_longitude">Pickup Longitude</label><br>
+            <input id="pickup_longitude" name="pickup_longitude" type="text" required>
+        </div>
+        <div>
+            <label for="pickup_latitude">Pickup Latitude</label><br>
+            <input id="pickup_latitude" name="pickup_latitude" type="text" required>
+        </div>
+        <div>
+            <label for="dropoff_longitude">Dropoff Longitude</label><br>
+            <input id="dropoff_longitude" name="dropoff_longitude" type="text" required>
+        </div>
+        <div>
+            <label for="dropoff_latitude">Dropoff Latitude</label><br>
+            <input id="dropoff_latitude" name="dropoff_latitude" type="text" required>
+        </div>
+        <button type="submit">Calculate the trip duration</button>
+    </form>
+    {% if prediction_text %}
+    <div class="result">
+        <h3>{{ prediction_text }}</h3>
     </div>
-    <style>
-        body {
-            background-color: lightslategray;
-            text-align: center;
-            padding: 0px;
-        }
-        #sub {
-            width: 120px;
-            height: 43px;
-            text-align: center;
-            border-radius: 14px;
-            font-size: 18px;
-        }
-        #sub:hover {
-            background-color: darkcyan;
-        }
-    </style>
+    {% endif %}
 </body>
 
 </html>
